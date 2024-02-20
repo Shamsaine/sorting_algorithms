@@ -34,12 +34,15 @@ void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2)
 
 void insertion_sort_list(listint_t **list)
 {
+	listint_t *current;
+	listint_t *temp;
+
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 	{
 		return;
 	}
 
-	listint_t *current = (*list)->next;
+	current = (*list)->next;
 
 	while (current != NULL)
 	{
@@ -47,16 +50,8 @@ void insertion_sort_list(listint_t **list)
 		while (insertion_point != NULL && insertion_point->n > current->n)
 		{
 			swap_nodes(list, insertion_point, current);
-			
-			listint_t *temp = *list;
-			while (temp)
-			{
-				printf("%d", temp->n);
-				if (temp->next)
-					printf(", ");
-				temp = temp->next;
-			}
-			printf("\n");
+
+			print_list(*list);
 
 			insertion_point = current->prev;
 		}
