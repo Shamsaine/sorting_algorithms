@@ -5,7 +5,7 @@
  *
  * @list: pointer to a doubly linked list
  * @node1: pointer to the first node
- * @node: pointer to the second node
+ * @node2: pointer to the second node
  *
  */
 
@@ -19,7 +19,7 @@ void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2)
 		node2->next->prev = node1;
 	node1->next = node2->next;
 	node2->prev = node1->prev;
-	
+
 	node1->prev = node2;
 	node2->next = node1;
 }
@@ -35,7 +35,7 @@ void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2)
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *current;
-	listint_t *temp;
+
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 	{
@@ -47,6 +47,7 @@ void insertion_sort_list(listint_t **list)
 	while (current != NULL)
 	{
 		listint_t *insertion_point = current->prev;
+
 		while (insertion_point != NULL && insertion_point->n > current->n)
 		{
 			swap_nodes(list, insertion_point, current);
